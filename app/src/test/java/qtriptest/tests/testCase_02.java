@@ -39,7 +39,7 @@ public class testCase_02 {
         System.out.println("Driver is ready.");
     }
     //String url = "https://qtripdynamic-qa-frontend.vercel.app/";
-    @Test(description = "Search and Filters Flow", dataProvider = "filterTestData",priority = 2, groups = "Regression",  dataProviderClass = DP.class)
+    @Test(description = "Verify that Search and filters work fine", dataProvider = "filterTestData",priority = 2, groups = "Search & Filters",  dataProviderClass = DP.class)
     public void TestCase02(String cityName, String categoryFilter, String durationFilter,  int expectedFilteredResults, int expectedUnfilteredResults) throws InterruptedException {
          // Ensure that the driver is properly initialized
          if (driver == null) {

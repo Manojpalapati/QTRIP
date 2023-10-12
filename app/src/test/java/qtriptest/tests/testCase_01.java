@@ -44,7 +44,7 @@ public class testCase_01 {
     //String url = "https://qtripdynamic-qa-frontend.vercel.app/pages/register/";
     public String lastGeneratedEmailAddress = "";
 
-@Test(priority = 1, groups = "Regression", description = "Login Flow", enabled = true, dataProvider = "loginTestData", dataProviderClass = DP.class)
+@Test(priority = 1, groups = "User Onboarding Flow", description = "Verify user registration - login - logout", enabled = true, dataProvider = "loginTestData", dataProviderClass = DP.class)
 @Parameters({"TC1_EmailAddress", "TC1_Password"})
 public void TestCase01( String EmailAddress,String password) throws InterruptedException {
     Boolean status;

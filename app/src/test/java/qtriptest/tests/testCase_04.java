@@ -31,7 +31,7 @@ public class testCase_04 {
         System.out.println("Driver has been quit.");
     }
 
-    @Test(priority = 4, groups = "Regression", description = "Reliability Flow", enabled = true, dataProvider = "bookingTestData", dataProviderClass = DP.class)
+    @Test(priority = 4, groups = "Booking History flow", description = "Verify that Booking history can be viewed", enabled = true, dataProvider = "bookingTestData", dataProviderClass = DP.class)
    // @Parameters({"dataset1", "dataset2", "dataset3"})
    public void TestCase04(String EmailAddress, String password, String dataset1, String dataset2, String dataset3) throws NumberFormatException, InterruptedException {
     Boolean status;
