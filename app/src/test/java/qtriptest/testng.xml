@@ -1,0 +1,18 @@
+<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
+<suite name="QTripTestSuite">
+    <test name="QTripTest">
+        <parameter name="TC1_EmailAddress" value="testuser@gmail.com" />
+        <parameter name="TC1_Password" value="abc@123" />
+        <parameter name="TC1_EmailAddress" value="TESTUSER@gmail.com" />
+        <parameter name="TC1_Password" value="123456" />
+        <parameter name="TC1_EmailAddress" value="123_USER_low@gmail.com" />
+        <parameter name="TC1_Password" value="QWERTY!!!!" />
+        <classes>
+            <class name="qtriptest.DriverSingleton">
+                <methods>
+                    <include name="TestCase01" />
+                </methods>
+            </class>
+        </classes>
+    </test>
+</suite>
