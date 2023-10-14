@@ -1,11 +1,13 @@
 package qtriptest.tests;
 import qtriptest.DP;
 import qtriptest.DriverSingleton;
+import qtriptest.ReportSingleton;
 import qtriptest.pages.AdventurePage;
 import qtriptest.pages.HomePage;
 import qtriptest.pages.LoginPage;
 import qtriptest.pages.RegisterPage;
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -34,9 +36,10 @@ public class testCase_02 {
     RemoteWebDriver driver;
 
      @BeforeSuite(alwaysRun = true)
-    public void setupDriver() {
+    public void setupDriver() throws IOException {
         driver = DriverSingleton.getDriver();
         System.out.println("Driver is ready.");
+        ReportSingleton.startReport();
     }
     //String url = "https://qtripdynamic-qa-frontend.vercel.app/";
     @Test(description = "Verify that Search and filters work fine", dataProvider = "TestData",priority = 2, groups = "Search & Filters",  dataProviderClass = DP.class)
@@ -46,6 +49,7 @@ public class testCase_02 {
             System.out.println("Driver is not properly initialized. Aborting test.");
             return;
         }
+        ReportSingleton.startTest("TestCase02");
         // Step 1: Navigate to the Home page of QTrip
         HomePage homePage = new HomePage(driver);
         homePage.navigateToHome();
@@ -67,6 +71,7 @@ public class testCase_02 {
             System.out.println("Unfiltered results count is not as expected.");
             // You can handle the failure here, e.g., log it or perform some other action.
         }
+        ReportSingleton.endTest();
         
     
     }

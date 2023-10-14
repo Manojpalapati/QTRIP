@@ -29,6 +29,8 @@ dependencies {
     
     // https://mvnrepository.com/artifact/com.relevantcodes/extentreports
     implementation group: 'com.relevantcodes', name: 'extentreports' , version: '2.40.2'
+
+     // implementation 'com.aventstack:extentreports:6.0.2'
 }
 
 // Additional config for Crio workspace

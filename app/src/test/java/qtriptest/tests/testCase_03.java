@@ -1,12 +1,14 @@
 package qtriptest.tests;
 import qtriptest.DP;
 import qtriptest.DriverSingleton;
+import qtriptest.ReportSingleton;
 import qtriptest.pages.AdventurePage;
 import qtriptest.pages.HistoryPage;
 import qtriptest.pages.HomePage;
 import qtriptest.pages.LoginPage;
 import qtriptest.pages.RegisterPage;
 import java.io.File;
+import java.io.IOException;
 import java.net.MalformedURLException;
 import java.net.URL;
 import java.util.Arrays;
@@ -34,15 +36,17 @@ public class testCase_03 {
     public String lastGeneratedEmailAddress = "";
 
      @BeforeSuite(alwaysRun = true)
-    public void setupDriver() {
+    public void setupDriver() throws IOException {
         driver = DriverSingleton.getDriver();
         System.out.println("Driver is ready.");
+        ReportSingleton.startReport();
     }
 
     @AfterSuite(alwaysRun = true)
     public void teardownDriver() {
         DriverSingleton.quitDriver();
         System.out.println("Driver has been quit.");
+        ReportSingleton.flushReport();
     }
     @Test(description = "Verify that adventure booking and cancellation works fine", dataProvider = "TestData", priority = 3, groups = "Booking and Cancellation Flow", dataProviderClass = DP.class)
     public void TestCase03(String EmailAddress,String password,String cityName, String AdventureName, String GuestName, String Date, String  count) throws InterruptedException {
@@ -62,6 +66,7 @@ public class testCase_03 {
 
     // Save the last generated username
     lastGeneratedEmailAddress = registerUser.lastGeneratedEmailAddress;
+    ReportSingleton.startTest("TestCase03");
 
     // Visit the login page and login with the previuosly registered user
     LoginPage PerformLogin = new LoginPage(driver);
@@ -95,6 +100,7 @@ public class testCase_03 {
 
         // Step 9: Refresh the page
         driver.navigate().refresh();
+        ReportSingleton.endTest();
      }
     private void logStatus(String string, String string2, Object object) {}
 

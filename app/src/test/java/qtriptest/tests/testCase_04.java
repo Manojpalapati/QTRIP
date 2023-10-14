@@ -2,9 +2,11 @@ package qtriptest.tests;
 
 import qtriptest.DP;
 import qtriptest.DriverSingleton;
+import qtriptest.ReportSingleton;
 import qtriptest.pages.HomePage;
 import qtriptest.pages.LoginPage;
 import qtriptest.pages.RegisterPage;
+import java.io.IOException;
 import java.util.List;
 import qtriptest.pages.AdventureDetailsPage;
 import qtriptest.pages.AdventurePage;
@@ -20,21 +22,24 @@ public class testCase_04 {
     RemoteWebDriver driver;
 
     @BeforeSuite(alwaysRun = true)
-    public void setupDriver() {
+    public void setupDriver() throws IOException {
         driver = DriverSingleton.getDriver();
         System.out.println("Driver is ready.");
+        ReportSingleton.startReport();
     }
 
     @AfterSuite(alwaysRun = true)
     public void teardownDriver() {
         DriverSingleton.quitDriver();
         System.out.println("Driver has been quit.");
+        ReportSingleton.flushReport();
     }
 
-    @Test(priority = 4, groups = "Booking History flow", description = "Verify that Booking history can be viewed", enabled = true, dataProvider = "TestData", dataProviderClass = DP.class)
+   @Test(priority = 4, groups = "Booking History flow", description = "Verify that Booking history can be viewed", enabled = true, dataProvider = "TestData", dataProviderClass = DP.class)
    // @Parameters({"dataset1", "dataset2", "dataset3"})
    public void TestCase04(String EmailAddress, String password, String dataset1, String dataset2, String dataset3) throws NumberFormatException, InterruptedException {
     Boolean status;
+    ReportSingleton.startTest("TestCase04");
     
     // Split the dataset strings into individual values
     String[] data1 = dataset1.split(";");
@@ -73,6 +78,7 @@ public class testCase_04 {
 
     // Perform the booking for the third adventure
     bookAdventure(data3[0], data3[1], data3[2], data3[3], (data3[4]));
+    ReportSingleton.endTest();
 
 
    }
@@ -103,3 +109,4 @@ public class testCase_04 {
     }
 
 }
+

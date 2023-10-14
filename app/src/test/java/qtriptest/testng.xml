@@ -1,18 +1,33 @@
-<!DOCTYPE suite SYSTEM "http://testng.org/testng-1.0.dtd">
-<suite name="QTripTestSuite">
-    <test name="QTripTest">
-        <parameter name="TC1_EmailAddress" value="testuser@gmail.com" />
-        <parameter name="TC1_Password" value="abc@123" />
-        <parameter name="TC1_EmailAddress" value="TESTUSER@gmail.com" />
-        <parameter name="TC1_Password" value="123456" />
-        <parameter name="TC1_EmailAddress" value="123_USER_low@gmail.com" />
-        <parameter name="TC1_Password" value="QWERTY!!!!" />
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Tests for QTrip Regression">
+
+    <!-- <test name="LoginFlow">
         <classes>
-            <class name="qtriptest.DriverSingleton">
-                <methods>
-                    <include name="TestCase02" />
-                </methods>
-            </class>
+            <class name="qtriptest.tests.testCase_01"/>
         </classes>
+    </test>
+   
+    <test name="SearchFlow">
+        <classes>
+            <class name="qtriptest.tests.testCase_02"/>
+        </classes>
+    </test>
+
+    <test name="BookingFlow">
+        <classes>
+            <class name="qtriptest.tests.testCase_03"/>
+        </classes>
+    </test>
+
+    <test name="Reliability">
+        <classes>
+            <class name="qtriptest.tests.testCase_04"/>
+        </classes>
+    </test> -->
+    <test name = "Test Execution using testNG" verbose="2">
+        <packages>
+            <package name="qtriptest.tests"></package>
+        </packages>
     </test>
 </suite>
