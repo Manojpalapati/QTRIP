@@ -1,4 +1,5 @@
 package qtriptest.pages;
+import qtriptest.SeleniumWrapper;
 import java.util.List;
 import org.openqa.selenium.By;
 import org.openqa.selenium.NoSuchElementException;
@@ -17,6 +18,21 @@ public class HistoryPage {
      public HistoryPage(RemoteWebDriver driver) {
         this.driver = driver;
         this.wait = new WebDriverWait(driver, 10);
+    }
+    public boolean click(WebElement elementToClick) throws InterruptedException {
+        return SeleniumWrapper.click(elementToClick, driver);
+    }
+
+    public boolean sendKeys(WebElement inputBox, String keysToSend) throws InterruptedException {
+        return SeleniumWrapper.sendKeys(inputBox, keysToSend);
+    }
+
+    public boolean navigate(String url) throws InterruptedException {
+        return SeleniumWrapper.navigate(driver, url);
+    }
+
+    public WebElement  findElementWithRetry( By by, int retryCount) throws InterruptedException {
+        return SeleniumWrapper.findElementWithRetry(driver, by, retryCount);
     }
     public void navigateToQtripPage() {
         if (!driver.getCurrentUrl().equals(this.url)) {

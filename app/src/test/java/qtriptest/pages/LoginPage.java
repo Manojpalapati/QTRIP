@@ -1,4 +1,5 @@
 package qtriptest.pages;
+import qtriptest.SeleniumWrapper;
 import java.time.Duration;
 
 import org.openqa.selenium.By;
@@ -19,6 +20,21 @@ public class LoginPage {
 
     public LoginPage(RemoteWebDriver driver) {
         this.driver = driver;
+    }
+    public boolean click(WebElement elementToClick) throws InterruptedException {
+        return SeleniumWrapper.click(elementToClick, driver);
+    }
+
+    public boolean sendKeys(WebElement inputBox, String keysToSend) throws InterruptedException {
+        return SeleniumWrapper.sendKeys(inputBox, keysToSend);
+    }
+
+    public boolean navigate(String url) throws InterruptedException {
+        return SeleniumWrapper.navigate(driver, url);
+    }
+
+    public WebElement  findElementWithRetry( By by, int retryCount) throws InterruptedException {
+        return SeleniumWrapper.findElementWithRetry(driver, by, retryCount);
     }
 
     public void navigateToLoginPage() {

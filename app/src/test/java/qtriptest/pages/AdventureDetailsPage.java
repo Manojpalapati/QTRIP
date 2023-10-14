@@ -1,4 +1,5 @@
 package qtriptest.pages;
+import qtriptest.SeleniumWrapper;
 import java.util.List;
 
 import org.openqa.selenium.By;
@@ -15,12 +16,28 @@ import org.testng.Assert;
 
 
 public class AdventureDetailsPage {
-    RemoteWebDriver driver;
+    static RemoteWebDriver driver;
     
 
     public AdventureDetailsPage(RemoteWebDriver driver) {
 
         this.driver = driver;
+    }
+
+    public boolean click(WebElement elementToClick) throws InterruptedException {
+        return SeleniumWrapper.click(elementToClick, driver);
+    }
+
+    public boolean sendKeys(WebElement inputBox, String keysToSend) throws InterruptedException {
+        return SeleniumWrapper.sendKeys(inputBox, keysToSend);
+    }
+
+    public boolean navigate(String url) throws InterruptedException {
+        return SeleniumWrapper.navigate(driver, url);
+    }
+
+    public WebElement  findElementWithRetry( By by, int retryCount) throws InterruptedException {
+        return SeleniumWrapper.findElementWithRetry(driver, by, retryCount);
     }
     public boolean BookAdventure(String GuestName, String Date, String  count) throws InterruptedException {
         // Fill in booking details (name and date) and submit the form
