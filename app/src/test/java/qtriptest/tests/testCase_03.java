@@ -44,7 +44,7 @@ public class testCase_03 {
         DriverSingleton.quitDriver();
         System.out.println("Driver has been quit.");
     }
-    @Test(description = "Verify that adventure booking and cancellation works fine", dataProvider = "bookingTestDatat3", priority = 3, groups = "Booking and Cancellation Flow", dataProviderClass = DP.class)
+    @Test(description = "Verify that adventure booking and cancellation works fine", dataProvider = "TestData", priority = 3, groups = "Booking and Cancellation Flow", dataProviderClass = DP.class)
     public void TestCase03(String EmailAddress,String password,String cityName, String AdventureName, String GuestName, String Date, String  count) throws InterruptedException {
         // Step 1: Navigate to QTrip
         HomePage homePage = new HomePage(driver);

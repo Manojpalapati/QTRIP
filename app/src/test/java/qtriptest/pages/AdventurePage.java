@@ -54,7 +54,7 @@ public class AdventurePage {
         // Verify that the displayed data is correct (example logic)
         WebElement filteredDataElement = driver.findElement(By.xpath("(//select[@id='duration-select']//option)"));
         String displayedData = filteredDataElement.getText();
-        if (displayedData.contains(filterValue)) {
+        if (displayedData.contains((filterValue))) {
             System.out.println("Filter applied successfully. Displayed data is correct.");
         } else {
             System.out.println("Filter applied, but displayed data is incorrect.");
@@ -90,8 +90,13 @@ public class AdventurePage {
             if (resultCountText.isEmpty()) {
                 return 0; // Return 0 if the element text is empty
             }
-            
-            return Integer.parseInt(resultCountText);
+            // Remove all non-numeric characters from the result count text
+            String numericResultCountText = resultCountText.replaceAll("[^0-9]", "");
+
+            // Parse the numeric result count text as an integer
+            int resultCount = Integer.parseInt(numericResultCountText);
+
+            return resultCount;
         } catch (NumberFormatException e) {
             System.out.println("Failed to parse result count as an integer: " + e.getMessage());
             return -1; // Return a sentinel value (-1) to indicate a parsing error

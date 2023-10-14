@@ -44,8 +44,7 @@ public class testCase_01 {
     //String url = "https://qtripdynamic-qa-frontend.vercel.app/pages/register/";
     public String lastGeneratedEmailAddress = "";
 
-@Test(priority = 1, groups = "User Onboarding Flow", description = "Verify user registration - login - logout", enabled = true, dataProvider = "loginTestData", dataProviderClass = DP.class)
-@Parameters({"TC1_EmailAddress", "TC1_Password"})
+@Test(priority = 1, groups = "User Onboarding Flow", description = "Verify user registration - login - logout", enabled = true, dataProvider = "TestData", dataProviderClass = DP.class)
 public void TestCase01( String EmailAddress,String password) throws InterruptedException {
     Boolean status;
     // Visit the Registration page and register a new user

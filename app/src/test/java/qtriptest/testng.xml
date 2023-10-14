@@ -10,7 +10,7 @@
         <classes>
             <class name="qtriptest.DriverSingleton">
                 <methods>
-                    <include name="TestCase01" />
+                    <include name="TestCase02" />
                 </methods>
             </class>
         </classes>
